@@ -22,7 +22,7 @@ color ray_color(const ray& r, const hittable& world, int depth)
 	if (depth <= 0) 
 		return color(0.0, 0.0, 0.0);
 
-	if (world.hit(r, 1e-15, infinity, rec))
+	if (world.hit(r, 1e-14, infinity, rec))
 	{
 		ray scattered; 
 		color attenuation; 
@@ -47,21 +47,25 @@ int main()
 	const int max_depth = 50; 
 
 	// World
-	hittable_list world; 
-	
+	// what does the R mean? 
+	double R = cos(pi / 4);
+	hittable_list world;
+
 	std::shared_ptr<lambertian> material_ground = std::make_shared<lambertian>(color(0.8, 0.8, 0.0));
 	std::shared_ptr<lambertian> material_center = std::make_shared<lambertian>(color(0.1, 0.2, 0.5));
 	std::shared_ptr<dielectric> material_left = std::make_shared<dielectric>(1.5);
 	std::shared_ptr<metal> material_right = std::make_shared<metal>(color(0.8, 0.6, 0.2), 0.0);
 
-	world.add(std::make_shared<sphere>(point3(0.0, -100.5, -1.0), 100, material_ground));
+	world.add(std::make_shared<sphere>(point3(0.0, -100.5, -1.0), 100.0, material_ground));
 	world.add(std::make_shared<sphere>(point3(0.0, 0.0, -1.0), 0.5, material_center));
 	world.add(std::make_shared<sphere>(point3(-1.0, 0.0, -1.0), 0.5, material_left));
-	world.add(std::make_shared<sphere>(point3(-1.0, 0.0, -1.0), -0.4, material_left));
+	world.add(std::make_shared<sphere>(point3(-1.0, 0.0, -1.0), -0.45, material_left));
 	world.add(std::make_shared<sphere>(point3(1.0, 0.0, -1.0), 0.5, material_right));
 
 	// Camera 
-	camera cam; 
+	//camera cam(90.0, aspect_ratio);
+	//camera cam(point3(-2, 2, 1), point3(0, 0, -1), vec3(0, 1, 0), 90.0, aspect_ratio);
+	camera cam(point3(-2, 2, 1), point3(0, 0, -1), vec3(0, 1, 0), 20.0, aspect_ratio);
 
 	// Render 
 	std::cout << "P3\n" << image_width << ' ' << image_height << "\n255\n";
