@@ -1,9 +1,9 @@
 # Ray Tracing Project 
 This a ray tracing exercise project. Following the book “Ray Tracing in One Weekend.” 
 
-Three objects. samples_per_pixel = 100. 
+Three objects. samples_per_pixel = 100. Ray trace time about 1min.
 ![13_1_100](https://user-images.githubusercontent.com/86133411/150722536-b9291843-4ed3-49fe-9afe-62df8d0ce8d1.png)
-Final multiple objects. samples_per_pixel = 100. 
+Final multiple objects. samples_per_pixel = 100. Ray trace time about 1min.
 ![13_3_100](https://user-images.githubusercontent.com/86133411/150722428-25cc7209-7b56-48c8-bae4-430ad7731ec4.png)
 
 
