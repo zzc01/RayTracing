@@ -109,6 +109,12 @@ For simple ray tracing, it shoots one ray from each pixel, but in path tracing ,
 
 ######################################################
 
+
+"Ray Tracing in One Weekend." raytracing.github.io/books/RayTracingInOneWeekend.html
+"Ray Tracing | CPU vs GPU Performance analysis | HPP - CUDA" https://www.youtube.com/watch?v=yF3ZvMJH-rM
+"CUDA Accelerated Ray Tracer" https://www.youtube.com/watch?v=E6s9_SyfFlQ
+
+
 ray tracing 
 using GPU 
 real time ray tracing using openGL 
