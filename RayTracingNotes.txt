@@ -1,0 +1,116 @@
+1. other parameter sweeps 
+	100 vs. 500
+	dist to focus 
+
+######################################################
+
+How to debug ray tracing 
+1. Stream line the picture generating process 
+Like generate multiple picture at one run 
+2. The picture is so large how to specific zoom into a region to debug 
+for loop at a specific target 
+
+######################################################
+
+Still don't understand the mechanisim behind the color of background 
+
+######################################################
+
+Some vector are unit lenght. some are not? 
+
+######################################################
+
+Not familiar with the units like from 0 ~ 1 what is the distance 
+how far will the ball move, how bit will the ball grow 
+
+######################################################
+
+Standard output stream(cout): cout is the instance of the ostream class. cout is used to produce output on the standard output device which is usually the display screen. The data needed to be displayed on the screen is inserted in the standard output stream(cout) using the insertion operator(<<).
+
+Standard error stream (cerr): cerr is the standard error stream which is used to output the errors. It is an instance of the ostream class. As cerr stream is un-buffered so it is used when we need to display the error message immediately and does not store the error message to display later. The object of class ostream that represents the standard error stream oriented to narrow characters(of type char). It corresponds to the C stream stderr.
+The “c” in cerr refers to “character” and ‘err’ means “error”, Hence cerr means “character error”. It is always a good practice to use cerr to display errors.
+
+######################################################
+
+Inline Functions in C++
+
+Inline function is one of the important feature of C++. 
+
+When the program executes the function call instruction the CPU stores the memory address of the instruction following the function call, copies the arguments of the function on the stack and finally transfers control to the specified function. The CPU then executes the function code, stores the function return value in a predefined memory location/register and returns control to the calling function. 
+
+This can become overhead if the execution time of function is less than the switching time from the caller function to called function (callee). For functions that are large and/or perform complex tasks, the overhead of the function call is usually insignificant compared to the amount of time the function takes to run. However, for small, commonly-used functions, the time needed to make the function call is often a lot more than the time needed to actually execute the function’s code. This overhead occurs for small functions because execution time of small function is less than the switching time.
+
+C++ provides an inline functions to reduce the function call overhead. Inline function is a function that is expanded in line when it is called. When the inline function is called whole code of the inline function gets inserted or substituted at the point of inline function call. This substitution is performed by the C++ compiler at compile time. Inline function may increase efficiency if it is small.
+
+######################################################
+
+Bug1: The sphere is shifted and scaled. Why is that? 
+The overrided operators in vec3:
+operator- and cross functionality is affected by its order. the order cannot be wrong in subtraction. 
+the scaled seems be artifact of visualization 
+
+######################################################
+
+Bug: Cannot redefine header files. Will create duplicated definitions.
+Seems not the case. What is the root cause of redefine error? 
+
+######################################################
+
+Diffusion model recurssion 
+randomly pick a point in the unit sphere 
+recussively search if it hits another object? until the ray hits the background. 
+
+######################################################
+
+Too dark. 0.5 is too fast to reduce the light? 
+  Very dark but not black. Meaning it bounced a lot of time. 
+  The more the bounce the darker it gets. 
+  Why does it bounce so much time when tmin=0, more than 50 times.  
+  When tmin = 0. Run pretty slow. perhaps means go very deep in recussion 50->0 
+  But when tmin = 0.000001. run much much faster. as if does not need to go very deep in the recurssion.  
+  Can keep reducing tmin = 1e-17 after the picture stop changing 
+  It is amazing how much less reflection just from tmin = 0 ~ 1e-17. 
+  Actually when 1e-17 to 1e-16 the picture is also very evident. 
+
+
+It was darker on the edge which does not make sense 
+slightly change tmin to 0.0000001 would change the whole picutre a lot  
+
+######################################################
+
+Diffuse the light different approach 
+
+cos()^3
+lambertion cos()^3 
+material scatter 
+material mirror r 
+
+######################################################
+
+The camera traces a ray on a pixel -> then randomly chooses one scatter direction to run recussion 
+however, shouldn't the camera ray from that pixel, actually come from all possible light sources?  
+
+Yes, it should. And is acheived by runing a pixel's ray trace 100 times. samples_per_pixel. 
+
+######################################################
+
+The tmin is affecting the result so much ... 
+from 1e-14 ~ 1e-17
+why is that? 
+
+######################################################
+
+Ray tracing v.s. path tracing 
+
+The basic concept of racy tracing is that you shoot a ray that will calculate the primary lightning, however, the ray will bounce and generate more and more rays, which might contribute less of the final lighting. According to this issue, path tracing shows a reasonable rendering equation to solve the exponential ray-increasing problem. So path tracing is only a fast form of ray tracing.
+
+For simple ray tracing, it shoots one ray from each pixel, but in path tracing , instead of sending out one ray it sends out tens, hundreds or even thousands of rays for each pixel to be rendered. When it hits a surface it doesn’t trace a path to every light source, instead it bounces the ray off the surface and keeps bouncing it until it hits a light source or exhausts some bounce limit. It then calculates the amount of light transferred all the way to the pixel, including any color information gathered from surfaces along the way. It then averages out the values calculated from all the paths that were traced into the scene to get the final pixel color value. It requires a ton of computing power and if you don’t send out enough rays per pixel or don’t trace the paths far enough into the scene then you end up with a very spotty image as many pixels fail to find any light sources from their rays. So when you increase the the samples per pixel, you can see the image quality becomes better and better.
+
+
+######################################################
+
+ray tracing 
+using GPU 
+real time ray tracing using openGL 
+game engine? 
+ 

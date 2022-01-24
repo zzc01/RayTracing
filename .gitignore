@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/raytracing pictures
+/RayTracingPictures
+/RayTracingNotes.txt.bak
+/README.md.bak
