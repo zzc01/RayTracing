@@ -3,13 +3,14 @@ This a ray tracing exercise project. Following the book “Ray Tracing in One We
 
 Three objects. samples_per_pixel = 100. Ray trace time about 1min.
 ![13_1_100](https://user-images.githubusercontent.com/86133411/150722536-b9291843-4ed3-49fe-9afe-62df8d0ce8d1.png)
-Final multiple objects. samples_per_pixel = 100. Ray trace time about 1min.
+Final multiple objects. samples_per_pixel = 100. Ray trace time about 10min.
 ![13_3_100](https://user-images.githubusercontent.com/86133411/150722428-25cc7209-7b56-48c8-bae4-430ad7731ec4.png)
 
 
 Future plans:
 1) Can add other objects like rectangle or evern more complicated object shapes. 
-2) Can try to use GPU and write code with Cuda
+2) Can continue on "The Next Week" and "The Rest Of Your Life". 
+3) Can try to use GPU and Cuda to speed up the ray tracing. 
 
 References:
 1) "Ray Tracing in One Weekend." https://raytracing.github.io/books/RayTracingInOneWeekend.html 
